@@ -1,26 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TopMenuComponent } from './components/top-menu/top-menu.component';
+
+import { AppComponent } from './app.component';
 import { FooterMenuComponent } from './components/footer-menu/footer-menu.component';
 import { HomeComponent } from './routes/home/home.component';
 import { RegisterComponent } from './routes/register/register.component';
+import { TopMenuComponent } from './components/top-menu/top-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopMenuComponent,
     FooterMenuComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    TopMenuComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    BrowserModule,
+    HttpClientModule,
+    NgbModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

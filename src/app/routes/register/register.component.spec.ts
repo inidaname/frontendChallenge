@@ -42,14 +42,9 @@ describe('RegisterComponent', () => {
     expect(email.valid).toBeFalsy();
   });
 
-  it('confirmPassword field validity', () => {
+  it('Password field validity', () => {
     const password = component.registerForm.controls['password'];
     expect(password.valid).toBeFalsy();
-  });
-
-  it('confirmPassword field validity', () => {
-    const confirmPassword = component.registerForm.controls['confirmPassword'];
-    expect(confirmPassword.valid).toBeFalsy();
   });
 
   it('should have password and confirmPassword equal value', () => {

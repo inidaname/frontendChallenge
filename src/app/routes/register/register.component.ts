@@ -17,9 +17,11 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
+      confirmPassword: ['']
     }, {validator: this.checkPassword});
   }
+
+  get f() { return this.registerForm.controls; }
 
   checkPassword(group: FormGroup): any {
     const password = group.controls.password.value;
@@ -31,8 +33,4 @@ export class RegisterComponent implements OnInit {
 
     return {confirmed: true};
   }
-
-  get f() { return this.registerForm.controls; }
-
-
 }
