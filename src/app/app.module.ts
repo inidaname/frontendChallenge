@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { FooterMenuComponent } from './components/footer-menu/footer-menu.component';
 import { HomeComponent } from './routes/home/home.component';
 import { RegisterComponent } from './routes/register/register.component';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
@@ -15,7 +14,6 @@ import { TopMenuComponent } from './components/top-menu/top-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FooterMenuComponent,
     HomeComponent,
     RegisterComponent,
     TopMenuComponent
