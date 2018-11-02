@@ -26,8 +26,6 @@ describe('RegisterComponent', () => {
   });
 
   it('should render form tag', async(() => {
-    fixture = TestBed.createComponent(RegisterComponent);
-    fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('form')).toBeTruthy();
   }));

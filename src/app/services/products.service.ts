@@ -11,7 +11,7 @@ import { Products } from '../interface/products';
 })
 export class ProductsService {
 
-  private mockURL = 'http://localhost:4200/api/data.json';
+  private mockURL = 'api/data.json';
 
   constructor(
     private http: HttpClient

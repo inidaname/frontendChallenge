@@ -23,7 +23,14 @@ describe('HomeComponent', () => {
   });
 
   it('should call product list', () => {
-    expect(component.results.length).toBeGreaterThanOrEqual(0)
+    expect(component.results.length).toBeGreaterThanOrEqual(0);
+  });
+
+  it('should create a grid box for each resutl', () => {
+    if (!component.results) {
+      const compiled = fixture.debugElement.nativeElement;
+      expect(compiled.getElementsByClassName('result').length).toBeLessThan(1);
+    }
   });
 
   it('should create', () => {

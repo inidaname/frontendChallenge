@@ -1,3 +1,33 @@
-<p>
-  home works!
-</p>
+<ng-container *ngIf="results.length > 0; then thenTemplate; else elseTemplate"></ng-container>
+<ng-template #thenTemplate>
+  <div class="row justify-content-center align-items-center mt-5 mb-5 ml-auto mr-auto">
+    <div class="card col-10 col-lg-3 col-sm-2 col-md-3 m-2 p-0 m-2" *ngFor="let result of results">
+      <div class="card-header">
+          City Name: {{result.city}}
+      </div>
+
+      <div class="card-body">
+        <p>
+          From: {{result.start_date | date:fullDate}}.
+        </p>
+        <p>
+          To:  {{result.end_date | date:fullDate}}.
+        </p>
+          
+        <p>
+          Price: {{result.price | currency:'USD' }}.
+        </p>
+        <p>
+          Status: {{result.status}}.
+        </p>
+      </div>
+
+      <div class="card-footer">
+          Color: {{result.color}} &nbsp; <span class="pt-1 pb-1 pr-3 pl-3" [style.background-color]="result.color"></span>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #elseTemplate>
+  We don't have anything
+</ng-template>
