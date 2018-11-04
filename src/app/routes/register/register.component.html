@@ -5,7 +5,7 @@
         Registration Form
       </div>
       <div class="card-body">
-        <form [formGroup]="registerForm">
+        <form [formGroup]="registerForm" (ngSubmit)="formSubmit()">
           <div class="form-group">
 
             <label for="exampleInputEmail1">Email address</label>
