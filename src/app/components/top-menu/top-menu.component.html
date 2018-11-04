@@ -1,20 +1,47 @@
 <nav class="navbar navbar-expand-lg navbar-white bg-white shadow-sm p-3 mb-2 rounded rounded-bottom">
-    <a class="navbar-brand" href="#">Front End Challenge</a>
+    <a [routerLink]="['/']" class="navbar-brand">Front End Challenge</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]="['/']" >Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
+      <ng-container *ngIf="user; then thenTemplate; else elseTemplate"></ng-container>
+      <ng-template #thenTemplate>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']">{{userEmail}}</a>
+        </li>        
+      </ng-template>
+      <ng-template #elseTemplate>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/register']">Register</a>
+        </li>
+      </ng-template>
     </ul>
-    <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
+    <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group mr-5">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                   name="dp" [(ngModel)]="datePicker" (ngModelChange)="checkDate($event, 'start')" ngbDatepicker #start="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="start.toggle()" type="button">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                   name="dp" [(ngModel)]="datePicker2" (ngModelChange)="checkDate($event, 'end')" ngbDatepicker #end="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="end.toggle()" type="button">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
   </div>
 </nav>
