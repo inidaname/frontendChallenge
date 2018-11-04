@@ -46,7 +46,5 @@ describe('TopMenuComponent', () => {
 
     service.userData.subscribe(result => userEmail = result.email);
     expect(userEmail).toContain('something@another.yes');
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.userEmail').textContent).toContain('something@another.yes');
   }));
 });
