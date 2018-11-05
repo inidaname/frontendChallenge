@@ -15,7 +15,6 @@ import { NgModel } from '@angular/forms';
 })
 export class TopMenuComponent implements OnInit {
 
-
   user: User;
   displayMonths = 2;
   navigation = 'select';
@@ -23,6 +22,7 @@ export class TopMenuComponent implements OnInit {
   outsideDays = 'visible';
   datePicker: NgModel;
   datePicker2: NgModel;
+
   constructor(
     private mockUser: ShareService,
   ) {}
