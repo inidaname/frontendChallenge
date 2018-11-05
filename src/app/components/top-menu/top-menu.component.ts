@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShareService } from 'src/app/services/share.service';
 import { User } from 'src/app/interface/User';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-top-menu',
@@ -20,7 +21,8 @@ export class TopMenuComponent implements OnInit {
   navigation = 'select';
   showWeekNumbers = false;
   outsideDays = 'visible';
-
+  datePicker: NgModel;
+  datePicker2: NgModel;
   constructor(
     private mockUser: ShareService,
   ) {}
