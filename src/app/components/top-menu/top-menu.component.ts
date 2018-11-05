@@ -15,7 +15,7 @@ import { User } from 'src/app/interface/User';
 export class TopMenuComponent implements OnInit {
 
 
-  userEmail: string;
+  user: User;
   displayMonths = 2;
   navigation = 'select';
   showWeekNumbers = false;
@@ -25,9 +25,17 @@ export class TopMenuComponent implements OnInit {
     private mockUser: ShareService,
   ) {}
 
-  ngOnInit() {
-    this.mockUser.userData.subscribe((result: User) => {
-      this.userEmail = result.email;
-    });
+  ngOnInit(): void {
+    this.mockUser.userData.subscribe((result: User) => this.user = result);
+  }
+
+  logOut(): void {
+    this.mockUser.registerUser(null);
+    this.user = null;
+  }
+
+  checkDate(date, type): void {
+    const dateString: Date = new Date(date.year, date.month, date.day);
+    this.mockUser.sortDates({dateString, type});
   }
 }

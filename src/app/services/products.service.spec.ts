@@ -3,6 +3,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 
 import { ProductsService } from './products.service';
+import { environment } from 'src/environments/environment';
 
 describe('ProductsService', () => {
   beforeEach(() => {
@@ -23,7 +24,7 @@ describe('ProductsService', () => {
       expect(data.length).toBeLessThan(1);
     });
 
-    const req = httpMock.expectOne('http://localhost:4200/api/data.json');
+    const req = httpMock.expectOne(environment.fetch);
     expect(req.request.method).toEqual('GET');
 
     // req.flush({data: ...});

@@ -36,7 +36,7 @@ describe('TopMenuComponent', () => {
 
   it('should have user email', inject([ShareService], (service: ShareService) => {
     expect(service).toBeTruthy();
-    let userEmail = component.userEmail;
+    let user = component.user;
     const mockObj = {
       email: 'something@another.yes',
       password: '12345678',
@@ -44,7 +44,27 @@ describe('TopMenuComponent', () => {
     };
     service.registerUser(mockObj);
 
-    service.userData.subscribe(result => userEmail = result.email);
-    expect(userEmail).toContain('something@another.yes');
+    service.userData.subscribe(result => user = result);
+    expect(user.email).toContain('something@another.yes');
+  }));
+
+  it('should log out user', inject([ShareService], (service: ShareService) => {
+    expect(service).toBeTruthy();
+    let user = component.user;
+    const mockObj = {
+      email: 'something@another.yes',
+      password: '12345678',
+      confirmPassword: '12345678'
+    };
+    service.registerUser(mockObj);
+
+    // check if it registered
+    service.userData.subscribe(result => user = result);
+    expect(user.email).toContain('something@another.yes');
+
+    // then set it back to null
+    component.logOut();
+    service.userData.subscribe(result => user = result);
+    expect(user).toBeNull();
   }));
 });

@@ -13,9 +13,16 @@ describe('ShareService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should be null at instance', inject([ShareService], (service: ShareService) => {
+  it('should User Data be null at instance', inject([ShareService], (service: ShareService) => {
     service.userData.subscribe(result => {
       expect(result).toBeNull();
     });
   }));
+
+  it('should Date Sort be null at instance', inject([ShareService], (service: ShareService) => {
+    service.dateList.subscribe(result => {
+      expect(result).toBeNull();
+    });
+  }));
+
 });

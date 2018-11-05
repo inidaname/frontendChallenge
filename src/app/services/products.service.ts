@@ -5,13 +5,14 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
 import { Products } from '../interface/products';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  private mockURL = 'api/data.json';
+  private mockURL = environment.fetch;
 
   constructor(
     private http: HttpClient
@@ -31,7 +32,6 @@ export class ProductsService {
     } else {
       errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
     }
-    console.error(errorMessage);
     return throwError(errorMessage);
   }
 }

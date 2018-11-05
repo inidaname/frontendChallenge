@@ -48,8 +48,8 @@
             formControlName="confirmPassword" 
             id="confirmPassword"
             [ngClass]="{
-              'is-valid': f.confirmPassword.touched && f.confirmPassword.valid, 
-              'is-invalid': f.confirmPassword.touched && f.confirmPassword.invalid
+              'is-valid': f.confirmPassword.touched && !f.confirmPassword.errors, 
+              'is-invalid': f.confirmPassword.touched && registerForm.hasError('confirmed')
             }"
             placeholder="Password">
 

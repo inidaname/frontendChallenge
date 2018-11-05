@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/']);
       }
     });
+
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -46,13 +47,9 @@ export class RegisterComponent implements OnInit {
   }
 
   formSubmit() {
-    console.log(this.registerForm.value);
     if (this.registerForm.invalid) {
-      console.log('invalid');
       return;
     }
-
-    console.log('valid');
 
     this.mockReg.registerUser(this.registerForm.value);
     this.router.navigate(['/']);
