@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 import * as _ from 'underscore';
@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   outsideDays = 'visible';
   datePicker: NgModel;
   datePicker2: NgModel;
+  @ViewChild('listTabs') listTabs;
 
   public get listFilter(): any {
     return this.list;
@@ -47,7 +48,17 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  performSort(sortParam: string): void {
+  performSort(sortParam: string, event?): void {
+    if (this.listTabs) {
+      event.preventDefault();
+      const children: any[] = this.listTabs.nativeElement.children;
+      for (const child of children) {
+        if (child.querySelector('a').classList.contains('active')) {
+          child.querySelector('a').classList.remove('active');
+        }
+      }
+      event.target.classList.add('active');
+    }
     this.filteredProducts = _.sortBy(this.results, sortParam);
   }
 

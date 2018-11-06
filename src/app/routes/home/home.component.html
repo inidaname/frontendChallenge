@@ -35,30 +35,30 @@
   <div class="row">
     <div class="card w-100">
       <div class="card-header bg-light">
-        <ul class="nav nav-tabs card-header-tabs">
+        <ul class="nav nav-tabs card-header-tabs" #listTabs>
           <li class="nav-item">
-            <a class="nav-link active" (click)="performSort('city')">City Name</a>
+            <a class="nav-link" href="#" (click)="performSort('city', $event)">City Name</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="performSort('start_date')">Date Start</a>
+            <a class="nav-link" href="#" (click)="performSort('start_date', $event)">Date Start</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="performSort('end_date')">Date End</a>
+            <a class="nav-link" href="#" (click)="performSort('end_date', $event)">Date End</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="performSort('price')">Price</a>
+            <a class="nav-link" href="#" (click)="performSort('price', $event)">Price</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="performSort('status')">Status</a>
+            <a class="nav-link" href="#" (click)="performSort('status', $event)">Status</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="performSort('color')">Color</a>
+            <a class="nav-link" href="#" (click)="performSort('color', $event)">Color</a>
           </li>
         </ul>
       </div>
 
       <div class="card-body w-100 row justify-content-center align-items-center mt-5 mb-5 ml-auto mr-auto">
-        <div class="card col-lg-3 col-sm-5 m-1 p-0" *ngFor="let result of sortResult | paginate: { itemsPerPage: 15, currentPage: p }">
+        <div class="card col-lg-3 col-sm-5 m-1 p-0" *ngFor="let result of filteredProducts | paginate: { itemsPerPage: 15, currentPage: p }">
           <div class="card-header bg-white">
             City Name: {{result.city}}
           </div>
