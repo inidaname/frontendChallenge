@@ -18,11 +18,4 @@ describe('ShareService', () => {
       expect(result).toBeNull();
     });
   }));
-
-  it('should Date Sort be null at instance', inject([ShareService], (service: ShareService) => {
-    service.dateList.subscribe(result => {
-      expect(result).toBeNull();
-    });
-  }));
-
 });

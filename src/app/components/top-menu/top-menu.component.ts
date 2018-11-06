@@ -16,12 +16,7 @@ import { NgModel } from '@angular/forms';
 export class TopMenuComponent implements OnInit {
 
   user: User;
-  displayMonths = 2;
-  navigation = 'select';
-  showWeekNumbers = false;
-  outsideDays = 'visible';
-  datePicker: NgModel;
-  datePicker2: NgModel;
+  collapsed = true;
 
   constructor(
     private mockUser: ShareService,
@@ -31,13 +26,12 @@ export class TopMenuComponent implements OnInit {
     this.mockUser.userData.subscribe((result: User) => this.user = result);
   }
 
+    toggleCollapsed(): void {
+      this.collapsed = !this.collapsed;
+    }
+
   logOut(): void {
     this.mockUser.registerUser(null);
     this.user = null;
-  }
-
-  checkDate(date, type): void {
-    const dateString: Date = new Date(date.year, date.month, date.day);
-    this.mockUser.sortDates({dateString, type});
   }
 }

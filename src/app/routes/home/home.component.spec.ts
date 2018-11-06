@@ -3,6 +3,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HomeComponent } from './home.component';
 import {  NgxPaginationModule } from 'ngx-pagination';
+import { NgbRootModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -11,7 +15,14 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
-      imports: [HttpClientModule, NgxPaginationModule]
+      imports: [
+        HttpClientModule,
+        NgxPaginationModule,
+        NgbRootModule,
+        RouterModule,
+        RouterTestingModule,
+        FormsModule
+      ]
     })
     .compileComponents();
   }));
@@ -33,7 +44,7 @@ describe('HomeComponent', () => {
     }
   });
 
-  it('should create', () => {
+  it('should create Home Component', () => {
     expect(component).toBeTruthy();
   });
 });

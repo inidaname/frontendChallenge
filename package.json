@@ -24,8 +24,10 @@
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "bootstrap": "^4.0.0",
     "core-js": "^2.5.4",
+    "jquery": "^3.3.1",
     "ngx-pagination": "^3.2.1",
     "rxjs": "^6.0.0",
+    "underscore": "^1.9.1",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -36,6 +38,7 @@
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "@types/underscore": "^1.8.9",
     "codelyzer": "~4.2.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",

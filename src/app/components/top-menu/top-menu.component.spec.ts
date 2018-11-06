@@ -14,7 +14,7 @@ describe('TopMenuComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ TopMenuComponent ],
-      imports: [ NgbRootModule, RouterModule, RouterTestingModule, FormsModule ]
+      imports: [ RouterModule, RouterTestingModule ]
     })
     .compileComponents();
   }));
