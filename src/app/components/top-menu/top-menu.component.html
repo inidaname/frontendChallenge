@@ -1,19 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow rounded-bottom mb-3">
-    <a [routerLink]="['/home']" class="navbar-brand">Front End Challenge</a>
-  <button class="navbar-toggler" type="button" (click)="toggleCollapsed()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <a [routerLink]="['/home']" class="navbar-brand">Front End Challenge</a>
+  <button class="navbar-toggler" type="button" (click)="toggleCollapsed()" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/home']" >{{user?.email || 'Home'}} <span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]="['/home']">{{userRegistered?.email || 'Home'}} <span class="sr-only">(current)</span></a>
       </li>
-      <ng-container *ngIf="user; then thenTemplate; else elseTemplate"></ng-container>
+      <ng-container *ngIf="userRegistered; then thenTemplate; else elseTemplate"></ng-container>
       <ng-template #thenTemplate>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/home']" (click)="logOut()">Log Out</a>
-        </li>        
-      </ng-template>
+        </li>
+      </ng-template><!-- end of thenTemplate -->
       <ng-template #elseTemplate>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/register']">Register</a>

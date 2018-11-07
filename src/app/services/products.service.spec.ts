@@ -1,9 +1,8 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed, inject } from '@angular/core/testing';
-import { HttpClient } from '@angular/common/http';
 
 import { ProductsService } from './products.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 describe('ProductsService', () => {
   beforeEach(() => {
@@ -14,7 +13,7 @@ describe('ProductsService', () => {
   });
 
 
-  it('should be created', inject([ProductsService], (service: ProductsService) => {
+  it('should create Product Service', inject([ProductsService], (service: ProductsService) => {
     expect(service).toBeTruthy();
   }));
 

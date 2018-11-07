@@ -1,35 +1,48 @@
 <ng-container *ngIf="results.length > 0; then thenTemplate; else elseTemplate"></ng-container>
 <ng-template #thenTemplate>
-
   <form class="form-inline">
     <div class="form-group row w-75 mr-auto ml-auto">
       <div class="input-group ml-auto mr-auto mt-2 mb-2">
         <div class="input-group-prepend">
-          <span class="input-group-text"> From:</span>
+          <span class="input-group-text">
+            From:
+          </span>
         </div>
-        <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="datePicker" (ngModelChange)="checkDate($event, 'start')"
+        <input
+          class="form-control" 
+          placeholder="yyyy-mm-dd" 
+          name="dp" 
+          [(ngModel)]="datePicker" 
+          (ngModelChange)="setDateForFilter($event, 'start')"
           ngbDatepicker #start="ngbDatepicker">
 
         <div class="input-group-append">
           <button class="btn btn-outline-secondary calendar" (click)="start.toggle()" type="button">
             <i class="fa fa-calendar" aria-hidden="true"></i>
           </button>
-        </div>
-      </div>
+        </div> <!-- close 2nd input group append -->
+      </div> <!-- close div form FROM form selector -->
 
       <div class="input-group ml-auto mr-auto mt-2 mb-2">
         <div class="input-group-prepend">
-          <span class="input-group-text"> To:</span>
+          <span class="input-group-text"> 
+            To:
+          </span>
         </div>
-        <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="datePicker2" (ngModelChange)="checkDate($event, 'end')"
+        <input class="form-control" 
+          placeholder="yyyy-mm-dd" 
+          name="dp" 
+          [(ngModel)]="datePicker2" 
+          (ngModelChange)="setDateForFilter($event, 'end')"
           ngbDatepicker #end="ngbDatepicker">
+
         <div class="input-group-append">
           <button class="btn btn-outline-secondary calendar" (click)="end.toggle()" type="button">
             <i class="fa fa-calendar" aria-hidden="true"></i>
           </button>
-        </div>
-      </div>
-    </div>
+        </div> <!-- close 2nd input group append -->
+      </div> <!-- close div form To form selector -->
+    </div> <!-- close div FROM holder -->
   </form>
 
   <div class="row">
@@ -54,8 +67,8 @@
           <li class="nav-item">
             <a class="nav-link" href="#" (click)="performSort('color', $event)">Color</a>
           </li>
-        </ul>
-      </div>
+        </ul> <!-- close ul for top sorting nav bar-->
+      </div> <!-- close card header  -->
 
       <div class="card-body w-100 row justify-content-center align-items-center mt-5 mb-5 ml-auto mr-auto">
         <div class="card col-lg-3 col-sm-5 m-1 p-0" *ngFor="let result of filteredProducts | paginate: { itemsPerPage: 15, currentPage: p }">
@@ -82,17 +95,14 @@
           <div class="card-footer bg-white">
             Color: {{result.color}} &nbsp; <span class="shadow-sm pt-1 pb-1 pr-3 pl-3" [style.background-color]="result.color"></span>
           </div>
-        </div>
-      </div>
+        </div> <!-- close div card for each object -->
+      </div> <!-- close div body for display of looped content -->
       <div class="card-footer text-center">
         <pagination-controls (pageChange)="p = $event"></pagination-controls>
-      </div>
-    </div>
-  </div>
-
-  <div class="row justify-content-center align-items-center mt-5 mb-5 ml-auto mr-auto">
-  </div>
-</ng-template>
+      </div><!-- close card footer for pagination -->
+    </div> <!-- close main card layout -->
+  </div> <!-- close row content layout -->
+</ng-template><!-- end of thenTemplate -->
 <ng-template #elseTemplate>
   <div class=" vh h-100 justify-content-center align-content-center w-100 text-center">
     Fetching Data

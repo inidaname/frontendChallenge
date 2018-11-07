@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-import { HomeComponent } from './home.component';
-import {  NgxPaginationModule } from 'ngx-pagination';
-import { NgbRootModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FormsModule } from '@angular/forms';
+
+import { HomeComponent } from './home.component';
+import { NgbRootModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -37,7 +37,7 @@ describe('HomeComponent', () => {
     expect(component.results.length).toBeGreaterThanOrEqual(0);
   });
 
-  it('should create a grid box for each resutl', () => {
+  it('should create a grid box for each result', () => {
     if (!component.results) {
       const compiled = fixture.debugElement.nativeElement;
       expect(compiled.getElementsByClassName('result').length).toBeLessThan(1);

@@ -3,7 +3,7 @@ import { NgModel } from '@angular/forms';
 
 import * as _ from 'underscore';
 import { ProductsService } from '../../services/products.service';
-import { Products } from 'src/app/interface/products';
+import { Products } from '../../interface/products';
 
 @Component({
   templateUrl: './home.component.html',
@@ -11,8 +11,8 @@ import { Products } from 'src/app/interface/products';
 })
 export class HomeComponent implements OnInit {
   list: any;
-  startDate = null;
-  endDate: Date = new Date();
+  fromDate = null;
+  toDate: Date = new Date();
   filteredProducts: Products[];
   results: Products[] = [];
   errorMessage;
@@ -39,13 +39,15 @@ export class HomeComponent implements OnInit {
   constructor(private products: ProductsService) {}
 
   ngOnInit() {
-    this.products.getProducts().subscribe(
-      (result: Products[]) => {
-        this.results = result;
-        this.performSort('id');
-      },
-      error => (this.errorMessage = <any>error)
-    );
+    this.products
+      .getProducts()
+      .subscribe(
+        (result: Products[]) => {
+          this.results = result;
+          this.filteredProducts = this.results;
+        },
+        error => (this.errorMessage = <any>error)
+      );
   }
 
   performSort(sortParam: string, event?): void {
@@ -53,8 +55,9 @@ export class HomeComponent implements OnInit {
       event.preventDefault();
       const children: any[] = this.listTabs.nativeElement.children;
       for (const child of children) {
-        if (child.querySelector('a').classList.contains('active')) {
-          child.querySelector('a').classList.remove('active');
+        const hrefElement = child.querySelector('a');
+        if (hrefElement.classList.contains('active')) {
+          hrefElement.classList.remove('active');
         }
       }
       event.target.classList.add('active');
@@ -64,16 +67,16 @@ export class HomeComponent implements OnInit {
 
   performFilter(filterBy: any): Products[] {
     if (filterBy.type === 'start') {
-      this.startDate = new Date(filterBy.dateString);
+      this.fromDate = new Date(filterBy.dateString);
     }
 
     if (filterBy.type === 'end') {
-      this.endDate = new Date(filterBy.dateString);
+      this.toDate = new Date(filterBy.dateString);
     }
     const filteredResult = this.results.filter((product: Products) => {
-      const fromDate = new Date(product.start_date);
-      const toDate = new Date(product.end_date);
-      if (fromDate >= this.startDate && toDate <= this.endDate) {
+      const startDate = new Date(product.start_date);
+      const endDate = new Date(product.end_date);
+      if (startDate >= this.fromDate && endDate <= this.toDate) {
         return product;
       }
     });
@@ -81,7 +84,7 @@ export class HomeComponent implements OnInit {
     return filteredResult.length >= 1 ? filteredResult : this.results;
   }
 
-  checkDate(date, type): void {
+  setDateForFilter(date, type): void {
     const dateString: Date = new Date(date.year, date.month, date.day);
     this.listFilter = { dateString, type };
   }
