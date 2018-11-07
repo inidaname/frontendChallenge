@@ -6,16 +6,11 @@ import { NgModel } from '@angular/forms';
 @Component({
   selector: 'app-top-menu',
   templateUrl: './top-menu.component.html',
-  styles: [`
-  select.custom-select {
-    margin: 0.5rem 0.5rem 0 0;
-    width: auto;
-  }
-`]
+  styles: []
 })
 export class TopMenuComponent implements OnInit {
 
-  user: User;
+  userRegistered: User;
   collapsed = true;
 
   constructor(
@@ -23,15 +18,17 @@ export class TopMenuComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.mockUser.userData.subscribe((result: User) => this.user = result);
+    this.mockUser
+      .userData
+      .subscribe((result: User) => this.userRegistered = result);
   }
 
-    toggleCollapsed(): void {
-      this.collapsed = !this.collapsed;
-    }
+  toggleCollapsed(): void {
+    this.collapsed = !this.collapsed;
+  }
 
   logOut(): void {
     this.mockUser.registerUser(null);
-    this.user = null;
+    this.userRegistered = null;
   }
 }

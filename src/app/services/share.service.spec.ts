@@ -9,7 +9,7 @@ describe('ShareService', () => {
     });
   });
 
-  it('should be created ShareService', inject([ShareService], (service: ShareService) => {
+  it('should create ShareService', inject([ShareService], (service: ShareService) => {
     expect(service).toBeTruthy();
   }));
 

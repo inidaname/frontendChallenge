@@ -7,12 +7,12 @@ import { User } from '../interface/User';
 })
 export class ShareService {
 
-  private regUser = new BehaviorSubject<User>(null);
-  userData = this.regUser.asObservable();
+  private mockUser = new BehaviorSubject<User>(null);
+  userData = this.mockUser.asObservable();
 
   constructor() { }
 
   registerUser(user: User) {
-    this.regUser.next(user);
+    this.mockUser.next(user);
   }
 }

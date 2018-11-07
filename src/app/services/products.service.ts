@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 import { Products } from '../interface/products';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +19,9 @@ export class ProductsService {
   ) { }
 
   getProducts(): Observable<Products[]> {
-    return this.http.get<Products[]>(this.mockURL).pipe(
-      tap(),
-      catchError(this.handleError)
-    );
+    return this.http
+              .get<Products[]>(this.mockURL)
+              .pipe(tap(), catchError(this.handleError));
   }
 
   private handleError(err: HttpErrorResponse) {

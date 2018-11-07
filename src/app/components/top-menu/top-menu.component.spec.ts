@@ -1,9 +1,7 @@
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-
-import { NgbRootModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { TopMenuComponent } from './top-menu.component';
 import { ShareService } from 'src/app/services/share.service';
 
@@ -34,9 +32,9 @@ describe('TopMenuComponent', () => {
     expect(compiled.querySelector('.navbar-brand').textContent).toContain('Front End Challenge');
   });
 
-  it('should have user email', inject([ShareService], (service: ShareService) => {
+  it('should have user email if registered', inject([ShareService], (service: ShareService) => {
     expect(service).toBeTruthy();
-    let user = component.user;
+    let user = component.userRegistered;
     const mockObj = {
       email: 'something@another.yes',
       password: '12345678',
@@ -48,9 +46,9 @@ describe('TopMenuComponent', () => {
     expect(user.email).toContain('something@another.yes');
   }));
 
-  it('should log out user', inject([ShareService], (service: ShareService) => {
+  it('should log out user if registered', inject([ShareService], (service: ShareService) => {
     expect(service).toBeTruthy();
-    let user = component.user;
+    let user = component.userRegistered;
     const mockObj = {
       email: 'something@another.yes',
       password: '12345678',
@@ -58,11 +56,9 @@ describe('TopMenuComponent', () => {
     };
     service.registerUser(mockObj);
 
-    // check if it registered
     service.userData.subscribe(result => user = result);
     expect(user.email).toContain('something@another.yes');
 
-    // then set it back to null
     component.logOut();
     service.userData.subscribe(result => user = result);
     expect(user).toBeNull();
